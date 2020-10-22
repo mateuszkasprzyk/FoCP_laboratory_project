@@ -11,7 +11,7 @@ using std::vector;
 int main(int argc, char* argv[])
 {
 	vector<std::string> vec=arguments(argc, argv);
-	for(int i=0;i<vec.size();i++)
-	cout<<vec[i]<<"\n";
+	//for(int i=0;i<vec.size();i++)
+	//cout<<vec[i]<<"\n";
 	return 0;
 }
