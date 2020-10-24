@@ -30,11 +30,18 @@ std::vector<std::vector<int>> load(std::string& file) {
 			temp.resize(main[0][1]);
 			for (int i = 0; i < main[0][0]; i++) {
 				getline(input_file, word);
+				word += ";";
 				line.clear();
 				line << word;
 				for (int j = 0; j < main[0][1]; j++) {
-					line >> value >> hash;
-					temp[j] = value;
+					if (line >> value >> hash) {
+						temp[j] = value;
+					}
+					else {
+						std::cout<<"There was an error while reading numbers in the matrix\n";
+						main.resize(0);
+						return main;
+					}
 				}
 				main.push_back(temp);
 			}

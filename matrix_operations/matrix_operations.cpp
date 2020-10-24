@@ -1,5 +1,7 @@
 ﻿#include <iostream>
 #include <vector>
+#include <string>
+#include <sstream>
 
 #include "arguments.h"
 #include "files.h"
@@ -18,6 +20,7 @@ int main(int argc, char* argv[])
 					if (vec[0] != "") {		
 						std::vector<std::vector<int>> matrix_a = load(vec[0]);
 						std::cout << "-----------------------------------------------------------\nMatrix A:\n";
+						if(matrix_a.size()!=0)
 						show(matrix_a);
 					}
 					std::cout << "-----------------------------------------------------------\n";
@@ -25,6 +28,7 @@ int main(int argc, char* argv[])
 						
 						std::vector<std::vector<int>> matrix_b = load(vec[1]);
 						std::cout << "-----------------------------------------------------------\nMatrix B:\n";
+						if(matrix_b.size()!=0)
 						show(matrix_b);
 					}
 
