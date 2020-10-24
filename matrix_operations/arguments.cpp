@@ -18,11 +18,11 @@ int show_help(int& number, char** arg) {
 }
 
 void printing_arguments(std::vector<std::string>& temp){
-	std::cout << "Program recognized following arguments:\n-------------------------------------------" << std::endl << std::setw(31) << std::left
+	std::cout << "Program recognized following arguments:\n" << std::endl << std::setw(31) << std::left
 		<< "Input file for matrix A: " << temp[0] << std::endl << std::setw(31) << std::left
 		<< "Input file for matrix B: " << temp[1] << std::endl << std::setw(31) << std::left
 		<< "Output file for results: " << temp[2] << std::endl << std::setw(31) << std::left
-		<< "Name of operation to perform: " << temp[3] << "\n-------------------------------------------\n";
+		<< "Name of operation to perform: " << temp[3] << "\n";
 }
 
 int missing_arg(int& number) {
@@ -78,7 +78,9 @@ std::vector<std::string> arguments(int& number, char** arg) {
 			for (int i = 1; i < number-1; i+=2) {				//loop for interating through table of arguments
 				std::string argument = std::string(arg[i]);		//assigning current argument form arg table to string variable 'argument'
 				std::string value = std::string(arg[i + 1]);
-				if (argument!="-operation" && value.substr(value.length() - 4, 4) != ".txt")
+				std::string value_temp = "   " + value;
+
+				if (argument!="-operation" && value_temp.substr(value_temp.length() - 4, 4) != ".txt")
 					value += ".txt";
 
 				if (argument == "-a") {
