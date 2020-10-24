@@ -6,6 +6,16 @@
 
 int main(int argc, char* argv[])
 {
-	std::vector<std::string> vec=arguments(argc, argv);
+	if (!show_help(argc, argv)) {
+		if (!missing_arg(argc)) {
+			std::vector<std::string> vec = arguments(argc, argv);
+			printing_arguments(vec);
+			if (arg_errors(argc, argv)) {
+				
+			}
+		}
+		
+	}
+
 	return 0;
 }
