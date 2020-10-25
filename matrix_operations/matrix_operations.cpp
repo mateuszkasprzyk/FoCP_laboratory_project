@@ -1,13 +1,10 @@
 ﻿#include <iostream>
 #include <vector>
-#include <string>
-#include <sstream>
 
 #include "arguments.h"
 #include "files.h"
 #include "operations.h"
 
-int test;
 int main(int argc, char* argv[])
 {
 	if (!show_help(argc, argv)) {
@@ -17,24 +14,29 @@ int main(int argc, char* argv[])
 			std::cout << "-----------------------------------------------------------\n";
 			if (arg_errors(argc, argv)) {
 				std::cout << "-----------------------------------------------------------\n";
-					if (vec[0] != "") {		
-						std::vector<std::vector<int>> matrix_a = load(vec[0]);
-						std::cout << "-----------------------------------------------------------\nMatrix A:\n";
-						if(matrix_a.size()!=0)
-						show(matrix_a);
-					}
-					std::cout << "-----------------------------------------------------------\n";
-					if (vec[1] != "") {
+				std::vector<std::vector<std::vector<int>>> matrix;
+				for (int j = 0; j < 2; j++) {
+					if (vec[j] != "") {
+							matrix.push_back(load(vec[j]));
 						
-						std::vector<std::vector<int>> matrix_b = load(vec[1]);
-						std::cout << "-----------------------------------------------------------\nMatrix B:\n";
-						if(matrix_b.size()!=0)
-						show(matrix_b);
+						if (matrix[j].size() != 0) {
+							std::cout << "-----------------------------------------------------------\nMatrix " << char(j + 65) << ":\n";
+							show(matrix[j]);
+							std::cout << "-----------------------------------------------------------\n";
+						}
 					}
-
+					else {
+						matrix.push_back(std::vector<std::vector<int>>{});
+					}
+				}
+				for (int j = 0; j < 2; j++) {
+					if (matrix[j].size() > 1) {
+						int size = 1,temp=1;
+						std::cout << "Determinant of Matrix " << char(j + 65) << ": " << determinant( matrix[j]) << std::endl;
+					}
+				}
 			}
 		}
-		
 	}
-	return 0;
+	return 5;
 }

@@ -49,6 +49,8 @@ std::vector<std::vector<int>> load(std::string& file) {
 		}
 		else {
 			std::cout << "Cannot find the matrix size declaration on the begining of the file\n";
+			main.resize(0);
+			return main;
 		}
 
 		input_file.close();
