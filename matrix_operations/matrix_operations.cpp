@@ -4,6 +4,8 @@
 #include "arguments.h"
 #include "files.h"
 #include "operations.h"
+#include "structures.h"
+
 
 int main(int argc, char* argv[])
 {
@@ -14,25 +16,26 @@ int main(int argc, char* argv[])
 			std::cout << "-----------------------------------------------------------\n";
 			if (arg_errors(argc, argv)) {
 				std::cout << "-----------------------------------------------------------\n";
-				std::vector<std::vector<std::vector<int>>> matrix;
+				std::vector<matrix> matrixes;
 				for (int j = 0; j < 2; j++) {
 					if (vec[j] != "") {
-							matrix.push_back(load(vec[j]));
-						
-						if (matrix[j].size() != 0) {
-							std::cout << "-----------------------------------------------------------\nMatrix " << char(j + 65) << ":\n";
-							show(matrix[j]);
+						matrixes.push_back(load(vec[j]));
+						std::cout << "-----------------------------------------------------------\n";
+						if (matrixes[j].values.size() != 0) {
+							std::cout << "Matrix " << char(j + 65) << ":\n";
+							show(matrixes[j]);
 							std::cout << "-----------------------------------------------------------\n";
 						}
 					}
 					else {
-						matrix.push_back(std::vector<std::vector<int>>{});
+						matrix temp;
+						temp.values.resize(0);
+						matrixes.push_back(temp);
 					}
 				}
 				for (int j = 0; j < 2; j++) {
-					if (matrix[j].size() > 1) {
-						int size = 1,temp=1;
-						std::cout << "Determinant of Matrix " << char(j + 65) << ": " << determinant( matrix[j]) << std::endl;
+					if (matrixes[j].values.size() > 1) {
+						std::cout << "Determinant of Matrix " << char(j + 65) << ": " << determinant( matrixes[j]) << std::endl;
 					}
 				}
 			}
